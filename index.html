@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Bersay | Salon de Coiffure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blanc: #ffffff;
+            --noir: #1d1d1f;
+            --gris-fonce: #424245;
+            --gris: #86868b;
+            --gris-clair: #f5f5f7;
+            --bleu: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--blanc);
+            color: var(--noir);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 0 5%;
+            height: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--noir);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gris-fonce);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--noir);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 18px;
+            height: 1.5px;
+            background: var(--noir);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 5% 80px;
+            background: var(--blanc);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--noir);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: var(--gris);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--bleu);
+            color: var(--blanc);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            border-radius: 980px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #0077ed;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--bleu);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-light {
+            background: var(--blanc);
+        }
+
+        .section-gray {
+            background: var(--gris-clair);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--noir);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gris);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--blanc);
+            padding: 40px 30px;
+            border-radius: 18px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .section-gray .service-card {
+            background: var(--blanc);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--noir);
+        }
+
+        .service-card p {
+            color: var(--gris);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .service-price {
+            font-size: 1.1rem;
+            color: var(--noir);
+            font-weight: 500;
+        }
+
+        /* Équipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            background: var(--gris-clair);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover .member-photo {
+            transform: scale(1.05);
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--noir);
+            margin-bottom: 4px;
+        }
+
+        .team-member .role {
+            color: var(--gris);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: var(--gris-fonce);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* Réservation */
+        .booking-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--noir);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--blanc);
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            color: var(--noir);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--bleu);
+            box-shadow: 0 0 0 4px rgba(0,113,227,0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--bleu);
+            border: none;
+            border-radius: 12px;
+            color: var(--blanc);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #0077ed;
+            transform: scale(1.01);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gris);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .contact-item p {
+            color: var(--noir);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--bleu);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gris-clair);
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--noir);
+            margin-bottom: 16px;
+        }
+
+        footer p {
+            color: var(--gris);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--bleu);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s;
+                gap: 2.5rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .btn-secondary {
+                display: block;
+                margin: 1rem 0 0 0;
+            }
+        }
+
+        /* Animations au scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">John Bersay</a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#equipe">Équipe</a></li>
+            <li><a href="#reservation">Réserver</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>John Bersay</h1>
+            <p>L'excellence de la coiffure. Simplement.</p>
+            <a href="#reservation" class="btn">Prendre rendez-vous</a>
+            <a href="#services" class="btn btn-secondary">Découvrir</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section-gray">
+        <div class="section-header fade-in">
+            <h2>Nos services</h2>
+            <p>Des prestations d'exception pour sublimer votre style</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">✂️</div>
+                <h3>Coupe Femme</h3>
+                <p>Une coupe sur-mesure qui révèle votre personnalité</p>
+                <span class="service-price">À partir de 45 €</span>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">💇</div>
+                <h3>Coupe Homme</h3>
+                <p>Du classique au contemporain, toujours impeccable</p>
+                <span class="service-price">À partir de 25 €</span>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🎨</div>
+                <h3>Coloration</h3>
+                <p>Balayage, mèches ou couleur complète avec des produits premium</p>
+                <span class="service-price">À partir de 60 €</span>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">✨</div>
+                <h3>Coiffure Événement</h3>
+                <p>Mariage, soirée, occasion spéciale — brillez</p>
+                <span class="service-price">À partir de 80 €</span>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">💆</div>
+                <h3>Soins</h3>
+                <p>Traitements réparateurs et revitalisants pour vos cheveux</p>
+                <span class="service-price">À partir de 35 €</span>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">👶</div>
+                <h3>Coupe Enfant</h3>
+                <p>Patience et douceur pour les plus jeunes</p>
+                <span class="service-price">À partir de 18 €</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Équipe -->
+    <section id="equipe" class="section-light">
+        <div class="section-header fade-in">
+            <h2>L'équipe</h2>
+            <p>Des experts passionnés à votre service</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <div class="member-photo">👨</div>
+                <h3>John Bersay</h3>
+                <p class="role">Fondateur & Directeur Artistique</p>
+                <p>20 ans d'expérience dans les plus grands salons</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">👩</div>
+                <h3>Emma Laurent</h3>
+                <p class="role">Expert Coloriste</p>
+                <p>Spécialiste des techniques de coloration modernes</p>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">👱‍♀️</div>
+                <h3>Lucas Martin</h3>
+                <p class="role">Styliste Senior</p>
+                <p>Passionné par les coupes créatives et sur-mesure</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Réservation -->
+    <section id="reservation" class="section-gray">
+        <div class="section-header fade-in">
+            <h2>Réservation</h2>
+            <p>Prenez rendez-vous en quelques clics</p>
+        </div>
+        <div class="booking-content fade-in">
+            <form id="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="vous@exemple.com" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Choisir</option>
+                            <option value="coupe-femme">Coupe Femme</option>
+                            <option value="coupe-homme">Coupe Homme</option>
+                            <option value="coloration">Coloration</option>
+                            <option value="evenement">Coiffure Événement</option>
+                            <option value="soins">Soins</option>
+                            <option value="enfant">Coupe Enfant</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="coiffeur">Coiffeur</label>
+                        <select id="coiffeur" name="coiffeur">
+                            <option value="">Pas de préférence</option>
+                            <option value="john">John Bersay</option>
+                            <option value="emma">Emma Laurent</option>
+                            <option value="lucas">Lucas Martin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Heure</label>
+                        <select id="time" name="time" required>
+                            <option value="">Choisir</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                            <option value="17:30">17:30</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (optionnel)</label>
+                    <textarea id="message" name="message" placeholder="Des précisions ?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Confirmer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-light">
+        <div class="section-header fade-in">
+            <h2>Contact</h2>
+            <p>Retrouvez-nous</p>
+        </div>
+        <div class="contact-grid fade-in">
+            <div class="contact-item">
+                <h3>Adresse</h3>
+                <p>123 Avenue des Champs-Élysées<br>75008 Paris</p>
+            </div>
+            <div class="contact-item">
+                <h3>Téléphone</h3>
+                <p><a href="tel:+33123456789">01 23 45 67 89</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>Horaires</h3>
+                <p>Mar - Sam : 9h - 19h<br>Dim & Lun : Fermé</p>
+            </div>
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p><a href="mailto:contact@johnbersay.fr">contact@johnbersay.fr</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">John Bersay</div>
+        <p>© 2026 John Bersay. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Navigation scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.style.borderBottomColor = window.scrollY > 10 ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0.05)';
+        });
+
+        // Mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Form
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            alert(`Merci ${data.name} !\n\nVotre demande de rendez-vous a été envoyée.\n\nService : ${data.service}\nDate : ${data.date}\nHeure : ${data.time}\n\nNous vous contacterons rapidement.`);
+            
+            this.reset();
+        });
+
+        // Set min date
+        document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
